@@ -123,7 +123,11 @@ DATABASES = {
 
 # Google Cloud Storage Configurations
 GS_BUCKET_NAME = os.environ.get('GS_BUCKET_NAME')
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(os.environ.get('GS_CREDENTIALS'))
+credential_path = os.environ.get('GS_CREDENTIALS_PATH')
+if credential_path:
+    GS_CREDENTIALS = service_account.Credentials.from_service_account_file(credential_path)
+else:
+    print("GS_CREDENTIALS not set. Google Cloud Services will not be available.")
 DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE', 'storages.backends.gcloud.GoogleCloudStorage')
 STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE', 'storages.backends.gcloud.GoogleCloudStorage')
 GS_PROJECT_ID = os.environ.get('GS_PROJECT_ID')

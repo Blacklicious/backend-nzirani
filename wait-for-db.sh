@@ -14,12 +14,10 @@ done
   
 >&2 echo "Postgres is up - executing command"
 
+
 python manage.py migrate
+python manage.py collectstatic --noinput
 # Create superuser
-echo "
-  from django.contrib.auth.models import User; 
-  User.objects.filter(username='mr.diallo').exists() 
-  or User.objects.create_superuser('mr.diallo', 'mr.diallo@nzirani.com', '**Team-223**')
-" | python manage.py shell
+echo "from django.contrib.auth.models import User; User.objects.filter(username='mr.diallo').exists() or User.objects.create_superuser('$SUPERUSER_NAME', '$SUPERUSER_EMAIL', '$SUPERUSER_PASSWORD')" | python manage.py shell
 
 exec $cmd
