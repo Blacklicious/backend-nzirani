@@ -155,6 +155,9 @@ if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
     CORS_ALLOWED_ORIGINS = [
+        'https://api.nzirani.com',
+        'https://image-tmak-txbxua333q-uc.a.run.app',
+        'https://t-mak.org',
     ]
 
 
