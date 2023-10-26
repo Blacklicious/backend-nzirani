@@ -41,7 +41,7 @@ GOOGLE_APPLICATION_CREDENTIALS = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'
 ALLOWED_HOSTS = ['api.nzirani.com', 'localhost', '127.0.0.1', 'image-tmak-txbxua333q-uc.a.run.app', 't-mak.org',]  # Add other domains as necessary
 
 #ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
-CSRF_TRUSTED_ORIGINS = ['api.nzirani.com']
+CSRF_TRUSTED_ORIGINS = ['https://api.nzirani.com', 'https://image-tmak-txbxua333q-uc.a.run.app',]
 
 # Application definition
 
