@@ -1,6 +1,6 @@
 # nzirani/models/__init__.py
 
-from .client import Client
+from .client import Client, Review
 from .employee import Employee
 from .item import Item, Product, Service
 from .logistic import Logistics

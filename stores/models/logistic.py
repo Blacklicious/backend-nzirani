@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Generalized Logistics Model
 class Logistics(models.Model):
     TYPE_CHOICES = [
@@ -14,3 +13,6 @@ class Logistics(models.Model):
     tracking_number = models.CharField(max_length=255, null=True, blank=True)
     estimated_delivery = models.DateField(null=True, blank=True)
     actual_delivery = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.estimated_delivery

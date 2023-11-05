@@ -26,10 +26,13 @@ class Article(CommonFields):
     file = models.ImageField(upload_to='images/publications/articles/')
 
 class Magazine(CommonFields):
+    thumbnail = models.FileField(upload_to='pdf/publications/magazines/thumbnails/', null=True, blank=True)
     file = models.FileField(upload_to='pdf/publications/magazines/', null=True, blank=True)
 
 class Podcast(CommonFields):
+    thumbnail = models.FileField(upload_to='pdf/publications/podcasts/thumbnails/', null=True, blank=True)
     file = models.FileField(upload_to='audio/publications/podcasts/', null=True, blank=True)
 
 class Video(CommonFields):
+    thumbnail = models.FileField(upload_to='pdf/publications/videos/thumbnails/', null=True, blank=True)
     file = models.FileField(upload_to='video/publications/videos/', null=True, blank=True)

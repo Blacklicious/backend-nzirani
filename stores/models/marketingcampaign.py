@@ -7,3 +7,6 @@ class MarketingCampaign(models.Model):
     end_date = models.DateField()
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     impact_on_sales = models.TextField()
+
+    def __str__(self):
+        return self.name

@@ -11,3 +11,6 @@ class Purchase(models.Model):
     date = models.DateField()
     feedback = models.TextField(blank=True, null=True)
     logistics = models.ForeignKey(Logistics, on_delete=models.SET_NULL, null=True, blank=True, related_name='purchases')
+
+    def __str__(self):
+        return self.date

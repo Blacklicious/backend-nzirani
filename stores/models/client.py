@@ -13,6 +13,9 @@ class Client(models.Model):
     purchase_history = models.ManyToManyField(Item, through='Purchase')
     feedback = models.TextField(blank=True, null=True)
 
+    def __str__(self):
+        return self.email
+
 class Review(models.Model):
     client = models.ForeignKey(Client, related_name='reviews', on_delete=models.CASCADE)
     review_text = models.TextField()
