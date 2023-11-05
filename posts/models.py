@@ -23,16 +23,16 @@ class CommonFields(models.Model):
         abstract = True
 
 class Article(CommonFields):
-    file = models.ImageField(upload_to='images/publications/articles/')
+    file = models.ImageField(upload_to='images/publications/articles/', null=True, blank=True)
 
 class Magazine(CommonFields):
-    thumbnail = models.ImageField(upload_to='pdf/publications/magazines/thumbnails/')
+    thumbnail = models.ImageField(upload_to='pdf/publications/magazines/thumbnails/', null=True, blank=True)
     file = models.FileField(upload_to='pdf/publications/magazines/', null=True, blank=True)
 
 class Podcast(CommonFields):
-    thumbnail = models.ImageField(upload_to='audio/publications/podcasts/thumbnails/')
+    thumbnail = models.ImageField(upload_to='audio/publications/podcasts/thumbnails/', null=True, blank=True)
     file = models.FileField(upload_to='audio/publications/podcasts/', null=True, blank=True)
 
 class Video(CommonFields):
-    thumbnail = models.ImageField(upload_to='video/publications/videos/thumbnails/')
+    thumbnail = models.ImageField(upload_to='video/publications/videos/thumbnails/', null=True, blank=True)
     file = models.FileField(upload_to='video/publications/videos/', null=True, blank=True)
