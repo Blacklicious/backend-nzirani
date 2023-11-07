@@ -90,7 +90,7 @@ ROOT_URLCONF = 'nzirani.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,6 +108,15 @@ WSGI_APPLICATION = 'nzirani.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Or your path to the SQLite database
+    }
+}
+
+'''
 #  integratation of Docker for PostgreSQL
 DATABASES = {
     'default': {
@@ -120,7 +129,6 @@ DATABASES = {
         'PORT': os.getenv("DATABASE_PORT", 5432),
     }
 }
-
 
 # Google Cloud Storage Configurations
 GS_BUCKET_NAME = os.environ.get('GS_BUCKET_NAME')
