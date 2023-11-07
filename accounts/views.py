@@ -8,6 +8,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import LeadSerializer, RawContactSerializer, UserSerializer, ContactSerializer, CustomTokenObtainPairSerializer
 from .models import Contact, Lead, RawContact
 from django.core.exceptions import MultipleObjectsReturned
+from rest_framework.decorators import action
+from django.core.mail import send_mail
 
 
 class CustomPermission(BasePermission):
@@ -137,3 +139,17 @@ class LeadViewSet(viewsets.ModelViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
     permission_classes = [CustomPermission]  # Add this line
+
+    def perform_create(self, serializer):
+        # Save the lead first
+        lead = serializer.save()
+        # After saving, send the email
+        self.send_email_to_user(lead)
+
+    def send_email_to_user(self, lead):
+        # Define your email sending logic here
+        subject = 'New Lead Created'
+        message = f'Lead {lead.name} was created successfully.'
+        email_from = 'n.traore@-mak.org'
+        recipient_list = [lead.email]
+        send_mail(subject, message, email_from, recipient_list)
